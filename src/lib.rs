@@ -4,8 +4,6 @@ use lexer::Lexer;
 use lexer::Token;
 
 // this code is from https://matklad.github.io/2020/04/13/simple-but-powerful-pratt-parsing.html
-// I rewrote it to try to understand it and use it in another of my project https://github.com/CyanUnderscore/FunctionHandler
-
 enum S {
     Atom(char),
     Cons(char, Vec<S>),
