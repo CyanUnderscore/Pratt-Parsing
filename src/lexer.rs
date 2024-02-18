@@ -5,6 +5,7 @@ pub enum Token {
     Eof,
 }
 
+#[derive(Debug)]
 pub struct Lexer {
     tokens: Vec<Token>,
 }

@@ -4,6 +4,7 @@ use lexer::Lexer;
 use lexer::Token;
 
 // this code is from https://matklad.github.io/2020/04/13/simple-but-powerful-pratt-parsing.html
+#[derive(Debug)]
 enum S {
     Atom(char),
     Cons(char, Vec<S>),
@@ -147,6 +148,12 @@ mod tests {
     fn lexer_tests() {
         let s = expr("1 + 2 * 3");
         assert_eq!(s.to_string(), "(+ 1 (* 2 3))");
+        let s = expr("(1 + 2) * 3");
+        println!("{:?}", Lexer::new("(1 + 2) * 3"));
+        assert_eq!(s.to_string(), "(* (+ 1 2) )");
+        let s = expr("(1 + 2) * 3");
+        println!("{:?}", Lexer::new("(1 + 2) * 3"));
+        assert_eq!(s.to_string(), "(* (+ 1 2) )");
     }
         #[test]
     fn prefix_test() {
